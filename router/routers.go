@@ -11,5 +11,6 @@ func setupRouters(r *gin.Engine) {
 	api := r.Group("/api")
 	{
 		api.POST("/todo", handler.CreateTodoHandler)
+		api.DELETE("/todo", handler.RemoveTodoHandler)
 	}
 }
