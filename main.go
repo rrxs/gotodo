@@ -11,5 +11,12 @@ var (
 
 func main() {
 	logger = config.GetLogger("main")
+
+	err := config.SetupConfig()
+	if err != nil {
+		logger.Errorf("error setting up config: %v", err)
+		return
+	}
+
 	router.Init()
 }
