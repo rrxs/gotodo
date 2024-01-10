@@ -6,8 +6,10 @@ import (
 )
 
 func setupRouters(r *gin.Engine) {
+	handler.SetupHandlers()
+
 	api := r.Group("/api")
 	{
-		api.GET("/todo", handler.GetTodoHandler)
+		api.POST("/todo", handler.CreateTodoHandler)
 	}
 }

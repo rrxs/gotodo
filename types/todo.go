@@ -8,7 +8,8 @@ import (
 
 type Todo struct {
 	gorm.Model
-	Title string
+	Title  string
+	IsDone bool
 }
 
 type TodoResponse struct {
@@ -17,4 +18,5 @@ type TodoResponse struct {
 	UpdatedAt time.Time `json:"updatedAt"`
 	DeletedAt time.Time `json:"deteledAt,omitempty"`
 	Title     string    `json:"description"`
+	IsDone    bool      `json:"isDone"`
 }

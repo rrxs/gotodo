@@ -23,6 +23,10 @@ func SetupConfig() error {
 	return nil
 }
 
+func GetDB() *gorm.DB {
+	return db
+}
+
 func GetLogger(l string) *Logger {
 	logger = NewLogger(l)
 	return logger
