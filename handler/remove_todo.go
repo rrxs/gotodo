@@ -13,6 +13,7 @@ func RemoveTodoHandler(c *gin.Context) {
 
 	if id == "" {
 		sendError(c, http.StatusBadRequest, fmt.Errorf("query param 'id' is required").Error())
+		return
 	}
 
 	todo := types.Todo{}
