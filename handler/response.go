@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/rrxs/gotodo/types"
 )
 
 func sendError(c *gin.Context, code int, msg string) {
@@ -21,4 +22,14 @@ func sendSuccess(c *gin.Context, op string, data interface{}) {
 		"message": fmt.Sprintf("operation %s successfull", op),
 		"data":    data,
 	})
+}
+
+type ErrorResponse struct {
+	Error     string `json:"error"`
+	ErrorCode string `json:"errorCode"`
+}
+
+type CreateTodoResponse struct {
+	Message string             `json:"message"`
+	Data    types.TodoResponse `json:"data"`
 }

@@ -7,6 +7,17 @@ import (
 	"github.com/rrxs/gotodo/types"
 )
 
+// @BasePath /api
+// @Summary Create todo
+// @Description Create a new todo item
+// @Tags Todos
+// @Accept json
+// Produce json
+// @Param request body CreateTodoRequest true "Request body"
+// @Success 200 {object} CreateTodoResponse
+// @Failure 400 {object} ErrorResponse
+// @Failure 500 {object} ErrorResponse
+// @Router /todo [post]
 func CreateTodoHandler(c *gin.Context) {
 	request := CreateTodoRequest{}
 

@@ -2,11 +2,10 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/rrxs/gotodo/docs"
 	"github.com/rrxs/gotodo/handler"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
-
-	"github.com/rrxs/gotodo/docs"
 )
 
 func setupRouters(r *gin.Engine) {

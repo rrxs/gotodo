@@ -1,4 +1,67 @@
+definitions:
+  handler.CreateTodoRequest:
+    properties:
+      title:
+        type: string
+    type: object
+  handler.CreateTodoResponse:
+    properties:
+      data:
+        $ref: '#/definitions/types.TodoResponse'
+      message:
+        type: string
+    type: object
+  handler.ErrorResponse:
+    properties:
+      error:
+        type: string
+      errorCode:
+        type: string
+    type: object
+  types.TodoResponse:
+    properties:
+      createdAt:
+        type: string
+      description:
+        type: string
+      deteledAt:
+        type: string
+      id:
+        type: integer
+      isDone:
+        type: boolean
+      updatedAt:
+        type: string
+    type: object
 info:
   contact: {}
-paths: {}
+paths:
+  /todo:
+    post:
+      consumes:
+      - application/json
+      description: Create a new todo item
+      parameters:
+      - description: Request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/handler.CreateTodoRequest'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.CreateTodoResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      summary: Create todo
+      tags:
+      - Todos
 swagger: "2.0"
