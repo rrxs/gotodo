@@ -14,5 +14,6 @@ func setupRouters(r *gin.Engine) {
 		api.DELETE("/todo", handler.RemoveTodoHandler)
 		api.GET("/todos", handler.ListTodoHandler)
 		api.GET("/todo", handler.GetTodoHandler)
+		api.PUT("/todo", handler.UpdateTodoHandler)
 	}
 }
