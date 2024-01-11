@@ -22,6 +22,5 @@ func (c *UpdateTodoRequest) Validate() error {
 	if c.Title != "" || c.IsDone != nil {
 		return nil
 	}
-	fmt.Errorf("at least one property 'title' or 'isDone' must be provided")
-	return nil
+	return fmt.Errorf("at least one property 'title' or 'isDone' must be provided")
 }
