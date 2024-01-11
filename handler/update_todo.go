@@ -8,6 +8,19 @@ import (
 	"github.com/rrxs/gotodo/types"
 )
 
+// @BasePath /api
+// @Summary Update todo
+// @Description Update a todo item
+// @Tags Todos
+// @Accept json
+// Produce json
+// @Param id query string true "Todo ID"
+// @Param request body UpdateTodoRequest true "Request body"
+// @Success 200 {object} UpdateTodoResponse
+// @Failure 400 {object} ErrorResponse
+// @Failure 404 {object} ErrorResponse
+// @Failure 500 {object} ErrorResponse
+// @Router /todo [PUT]
 func UpdateTodoHandler(c *gin.Context) {
 	request := UpdateTodoRequest{}
 

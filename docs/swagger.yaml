@@ -18,6 +18,43 @@ definitions:
       errorCode:
         type: string
     type: object
+  handler.GetTodoResponse:
+    properties:
+      data:
+        $ref: '#/definitions/types.TodoResponse'
+      message:
+        type: string
+    type: object
+  handler.ListTodoResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/types.TodoResponse'
+        type: array
+      message:
+        type: string
+    type: object
+  handler.RemoveTodoResponse:
+    properties:
+      data:
+        $ref: '#/definitions/types.TodoResponse'
+      message:
+        type: string
+    type: object
+  handler.UpdateTodoRequest:
+    properties:
+      isDone:
+        type: boolean
+      title:
+        type: string
+    type: object
+  handler.UpdateTodoResponse:
+    properties:
+      data:
+        $ref: '#/definitions/types.TodoResponse'
+      message:
+        type: string
+    type: object
   types.TodoResponse:
     properties:
       createdAt:
@@ -37,6 +74,58 @@ info:
   contact: {}
 paths:
   /todo:
+    delete:
+      consumes:
+      - application/json
+      description: Remove a todo item
+      parameters:
+      - description: Todo ID
+        in: query
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.RemoveTodoResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      summary: Remove todo
+      tags:
+      - Todos
+    get:
+      consumes:
+      - application/json
+      description: Returns a todo item
+      parameters:
+      - description: Todo ID
+        in: query
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.GetTodoResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      summary: Get todo
+      tags:
+      - Todos
     post:
       consumes:
       - application/json
@@ -62,6 +151,59 @@ paths:
           schema:
             $ref: '#/definitions/handler.ErrorResponse'
       summary: Create todo
+      tags:
+      - Todos
+    put:
+      consumes:
+      - application/json
+      description: Update a todo item
+      parameters:
+      - description: Todo ID
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: Request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/handler.UpdateTodoRequest'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.UpdateTodoResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      summary: Update todo
+      tags:
+      - Todos
+  /todos:
+    get:
+      consumes:
+      - application/json
+      description: Returns all todo items
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.ListTodoResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      summary: List todos
       tags:
       - Todos
 swagger: "2.0"

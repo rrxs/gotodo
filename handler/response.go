@@ -33,3 +33,23 @@ type CreateTodoResponse struct {
 	Message string             `json:"message"`
 	Data    types.TodoResponse `json:"data"`
 }
+
+type RemoveTodoResponse struct {
+	Message string             `json:"message"`
+	Data    types.TodoResponse `json:"data"`
+}
+
+type GetTodoResponse struct {
+	Message string             `json:"message"`
+	Data    types.TodoResponse `json:"data"`
+}
+
+type ListTodoResponse struct {
+	Message string               `json:"message"`
+	Data    []types.TodoResponse `json:"data"`
+}
+
+type UpdateTodoResponse struct {
+	Message string             `json:"message"`
+	Data    types.TodoResponse `json:"data"`
+}

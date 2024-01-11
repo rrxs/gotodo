@@ -8,6 +8,17 @@ import (
 	"github.com/rrxs/gotodo/types"
 )
 
+// @BasePath /api
+// @Summary Get todo
+// @Description Returns a todo item
+// @Tags Todos
+// @Accept json
+// Produce json
+// @Param id query string true "Todo ID"
+// @Success 200 {object} GetTodoResponse
+// @Failure 400 {object} ErrorResponse
+// @Failure 404 {object} ErrorResponse
+// @Router /todo [get]
 func GetTodoHandler(c *gin.Context) {
 	id := c.Query("id")
 
